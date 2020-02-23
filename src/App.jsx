@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 const calculateBackoff = (interval, retryAttempt, backoffRate) => {
@@ -18,6 +18,41 @@ const App = () => {
   const [retryAttempt, setRetryAttempt] = useState("8");
   const [backoffRate, setBackoffRate] = useState("2");
 
+  const [result, setResult] = useState([]);
+
+  const validation = () => {
+    if (isNaN(parseFloat(interval))) {
+      return false;
+    }
+
+    if (isNaN(parseInt(retryAttempt))) {
+      return false;
+    }
+
+    if (isNaN(parseFloat(backoffRate))) {
+      return false;
+    }
+
+    return true;
+  };
+
+  useEffect(() => {
+    const validatedParams = validation();
+
+    // TODO: 반환 값을 두 개의 파라미터로 나누기
+    if (!validatedParams) {
+      return;
+    }
+
+    setResult(
+      calculateBackoff(
+        parseFloat(interval),
+        parseInt(retryAttempt),
+        parseFloat(backoffRate)
+      )
+    );
+  }, [interval, retryAttempt, backoffRate]);
+
   return (
     <>
       <h1>Exponential Backoff Calculator</h1>
@@ -27,27 +62,25 @@ const App = () => {
           type="text"
           value={interval}
           placeholder="Interval (seconds)"
-          onChange={e => setInterval_(parseFloat(e.target.value))}
+          onChange={e => setInterval_(e.target.value)}
         />
         <input
           type="text"
           value={retryAttempt}
           placeholder="Retry attempt"
-          onChange={e => setRetryAttempt(parseFloat(e.target.value))}
+          onChange={e => setRetryAttempt(e.target.value)}
         />
         <input
           type="text"
           value={backoffRate}
           placeholder="Backoff rate"
-          onChange={e => setBackoffRate(parseFloat(e.target.value))}
+          onChange={e => setBackoffRate(e.target.value)}
         />
       </div>
       <h2>Result</h2>
-      {calculateBackoff(interval, retryAttempt, backoffRate).map(
-        ({ retryCount, seconds }) => {
-          return <div>{`${retryCount} / ${seconds} sec`}</div>;
-        }
-      )}
+      {result.map(({ retryCount, seconds }) => {
+        return <div key={retryCount}>{`${retryCount} / ${seconds} sec`}</div>;
+      })}
     </>
   );
 };
