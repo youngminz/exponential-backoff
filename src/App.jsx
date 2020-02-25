@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import InputParameter from "./components/InputParameter";
+import Result from "./components/Result";
 
 const calculateExponentialBackoff = (
   minRetryBackoff,
@@ -31,10 +33,10 @@ const App = () => {
   const [maxRetryBackoffSeconds, setMaxRetryBackoffSeconds] = useState(60.0);
   const [totalRetryCount, setTotalRetryCount] = useState(15);
 
-  const [result, setResult] = useState([]);
+  const [calculationResult, setCalculationResult] = useState([]);
 
   useEffect(() => {
-    setResult(
+    setCalculationResult(
       calculateExponentialBackoff(
         parseFloat(minRetryBackoffSeconds),
         parseFloat(maxRetryBackoffSeconds),
@@ -47,36 +49,16 @@ const App = () => {
     <>
       <h1>Exponential Backoff Calculator</h1>
 
-      <h2>Parameter</h2>
-      <div id="parameter">
-        <input
-          type="text"
-          value={minRetryBackoffSeconds}
-          placeholder="min retry backoff seconds"
-          onChange={e => setMinRetryBackoffSeconds(e.target.value)}
-        />
-        <input
-          type="text"
-          value={maxRetryBackoffSeconds}
-          placeholder="max retry backoff seconds"
-          onChange={e => setMaxRetryBackoffSeconds(e.target.value)}
-        />
-        <input
-          type="text"
-          value={totalRetryCount}
-          placeholder="total retry count"
-          onChange={e => setTotalRetryCount(e.target.value)}
-        />
-      </div>
+      <InputParameter
+        minRetryBackoffSeconds={minRetryBackoffSeconds}
+        setMinRetryBackoffSeconds={setMinRetryBackoffSeconds}
+        maxRetryBackoffSeconds={maxRetryBackoffSeconds}
+        setMaxRetryBackoffSeconds={setMaxRetryBackoffSeconds}
+        setTotalRetryCount={setTotalRetryCount}
+        totalRetryCount={totalRetryCount}
+      />
 
-      <h2>Result</h2>
-      {result.map(({ retryCount, backoffSeconds, accumlateBackoffSeconds }) => {
-        return (
-          <div key={retryCount}>{`${retryCount} / ${backoffSeconds.toFixed(
-            2
-          )} sec / ${accumlateBackoffSeconds.toFixed(2)} sec`}</div>
-        );
-      })}
+      <Result calculationResult={calculationResult} />
     </>
   );
 };
