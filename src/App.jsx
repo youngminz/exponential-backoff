@@ -46,8 +46,8 @@ const App = () => {
   }, [minRetryBackoffSeconds, maxRetryBackoffSeconds, totalRetryCount]);
 
   return (
-    <>
-      <h1>Exponential Backoff Calculator</h1>
+    <main className="app">
+      <div className="title">exponential backoff calculator</div>
 
       <InputParameter
         minRetryBackoffSeconds={minRetryBackoffSeconds}
@@ -59,7 +59,7 @@ const App = () => {
       />
 
       <Result calculationResult={calculationResult} />
-    </>
+    </main>
   );
 };
 

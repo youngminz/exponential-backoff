@@ -1,0 +1,13 @@
+.parameter > input {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  border: 1px solid #bbb;
+  margin: 10px 0;
+  transition-duration: 0.1s;
+
+  &:focus {
+    border: 1px solid #000;
+    transition-duration: 0.2s;
+  }
+}

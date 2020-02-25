@@ -1,4 +1,5 @@
 import React from "react";
+import "./InputParameter.scss";
 
 const InputParameter = ({
   minRetryBackoffSeconds,
@@ -9,7 +10,7 @@ const InputParameter = ({
   setTotalRetryCount
 }) => {
   return (
-    <div id="parameter">
+    <div className="parameter">
       <input
         type="text"
         value={minRetryBackoffSeconds}
