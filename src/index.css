@@ -15,3 +15,7 @@ html {
 *:focus {
   outline: none;
 }
+
+* {
+  font-family: "Courier New", Courier, monospace;
+}
