@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-const calculateBackoff = (
+const calculateExponentialBackoff = (
   minRetryBackoff,
   maxRetryBackoff,
   totalRetryCount
 ) => {
   let result = [];
+  let accumlateBackoffSeconds = 0.0;
 
   for (let retryCount = 1; retryCount <= totalRetryCount; retryCount++) {
+    const backoffSeconds = Math.min(
+      minRetryBackoff * 2 ** (retryCount - 1),
+      maxRetryBackoff
+    );
+    accumlateBackoffSeconds += backoffSeconds;
+
     result.push({
-      retryCount: retryCount,
-      seconds: Math.min(
-        minRetryBackoff * 2 ** (retryCount - 1),
-        maxRetryBackoff
-      )
+      retryCount,
+      backoffSeconds,
+      accumlateBackoffSeconds
     });
   }
 
@@ -22,49 +27,55 @@ const calculateBackoff = (
 };
 
 const App = () => {
-  const [minRetryBackoff, setMinRetryBackoff] = useState(0.1);
-  const [maxRetryBackoff, setMaxRetryBackoff] = useState(60.0);
+  const [minRetryBackoffSeconds, setMinRetryBackoffSeconds] = useState(0.1);
+  const [maxRetryBackoffSeconds, setMaxRetryBackoffSeconds] = useState(60.0);
   const [totalRetryCount, setTotalRetryCount] = useState(15);
 
   const [result, setResult] = useState([]);
 
   useEffect(() => {
     setResult(
-      calculateBackoff(
-        parseFloat(minRetryBackoff),
-        parseFloat(maxRetryBackoff),
+      calculateExponentialBackoff(
+        parseFloat(minRetryBackoffSeconds),
+        parseFloat(maxRetryBackoffSeconds),
         parseInt(totalRetryCount)
       )
     );
-  }, [minRetryBackoff, maxRetryBackoff, totalRetryCount]);
+  }, [minRetryBackoffSeconds, maxRetryBackoffSeconds, totalRetryCount]);
 
   return (
     <>
       <h1>Exponential Backoff Calculator</h1>
+
       <h2>Parameter</h2>
       <div id="parameter">
         <input
           type="text"
-          value={minRetryBackoff}
-          placeholder="{min retry backoff}"
-          onChange={e => setMinRetryBackoff(e.target.value)}
+          value={minRetryBackoffSeconds}
+          placeholder="min retry backoff seconds"
+          onChange={e => setMinRetryBackoffSeconds(e.target.value)}
         />
         <input
           type="text"
-          value={maxRetryBackoff}
-          placeholder="{max retry backoff}"
-          onChange={e => setMaxRetryBackoff(e.target.value)}
+          value={maxRetryBackoffSeconds}
+          placeholder="max retry backoff seconds"
+          onChange={e => setMaxRetryBackoffSeconds(e.target.value)}
         />
         <input
           type="text"
           value={totalRetryCount}
-          placeholder="{total retry count}"
+          placeholder="total retry count"
           onChange={e => setTotalRetryCount(e.target.value)}
         />
       </div>
+
       <h2>Result</h2>
-      {result.map(({ retryCount, seconds }) => {
-        return <div key={retryCount}>{`${retryCount} / ${seconds} sec`}</div>;
+      {result.map(({ retryCount, backoffSeconds, accumlateBackoffSeconds }) => {
+        return (
+          <div key={retryCount}>{`${retryCount} / ${backoffSeconds.toFixed(
+            2
+          )} sec / ${accumlateBackoffSeconds.toFixed(2)} sec`}</div>
+        );
       })}
     </>
   );
