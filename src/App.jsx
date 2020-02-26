@@ -52,7 +52,7 @@ const App = () => {
 
   return (
     <main className="app">
-      <h1>truncated exponential backoff calculator</h1>
+      <h1>truncated exponential backoff simulator</h1>
 
       <div className="form-wrapper">
         <Input
