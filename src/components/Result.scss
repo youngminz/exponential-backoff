@@ -1,4 +1,10 @@
-table {
+table.Result {
   width: 100%;
-  text-align: center;
+  max-width: 500px;
+  text-align: right;
+  margin: 0 auto;
+
+  thead th {
+    padding-bottom: 10px;
+  }
 }

@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./Result.scss";
 
 const Result = ({ calculationResult }) => {
@@ -22,7 +23,7 @@ const Result = ({ calculationResult }) => {
   );
 
   return (
-    <table>
+    <table className="Result">
       <thead>{header}</thead>
       <tbody>{body}</tbody>
     </table>

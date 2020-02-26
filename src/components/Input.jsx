@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+
 import "./Input.scss";
 
 const Input = ({
@@ -29,7 +30,7 @@ const Input = ({
 
   return (
     <div
-      className={`parameter ${active ? "active" : ""}`}
+      className={`Input ${active ? "active" : ""}`}
       onClick={() => handleWrapperClick()}
     >
       {label && <label>{label}</label>}

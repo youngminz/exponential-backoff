@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./App.scss";
 import Input from "./components/Input";
 import Result from "./components/Result";
+
+import "./App.scss";
 
 const calculateExponentialBackoff = (
   minRetryBackoff,
@@ -55,23 +56,23 @@ const App = () => {
 
       <div className="form-wrapper">
         <Input
-          label="Min retry backoff"
+          label="min retry backoff"
           value={minRetryBackoffSeconds}
           onChange={e => setMinRetryBackoffSeconds(e.target.value)}
-          addons="seconds"
+          addons="sec"
         />
         <Input
-          label="Max retry backoff"
+          label="max retry backoff"
           value={maxRetryBackoffSeconds}
           onChange={e => setMaxRetryBackoffSeconds(e.target.value)}
-          addons="seconds"
+          addons="sec"
         />
         <Input
-          label="Total retry count"
+          label="total retry count"
           value={totalRetryCount}
           onChange={e => setTotalRetryCount(e.target.value)}
           maxLength="3"
-          addons="retries"
+          addons="retry"
         />
       </div>
 
