@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import "./App.css";
 import InputParameter from "./components/InputParameter";
 import Result from "./components/Result";
@@ -33,17 +33,15 @@ const App = () => {
   const [maxRetryBackoffSeconds, setMaxRetryBackoffSeconds] = useState(60.0);
   const [totalRetryCount, setTotalRetryCount] = useState(15);
 
-  const [calculationResult, setCalculationResult] = useState([]);
-
-  useEffect(() => {
-    setCalculationResult(
+  const calculationResult = useMemo(
+    () =>
       calculateExponentialBackoff(
         parseFloat(minRetryBackoffSeconds),
         parseFloat(maxRetryBackoffSeconds),
         parseInt(totalRetryCount)
-      )
-    );
-  }, [minRetryBackoffSeconds, maxRetryBackoffSeconds, totalRetryCount]);
+      ),
+    [minRetryBackoffSeconds, maxRetryBackoffSeconds, totalRetryCount]
+  );
 
   return (
     <main className="app">
