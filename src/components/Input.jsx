@@ -9,7 +9,7 @@ const Input = ({
   onChange,
   addons,
   maxLength,
-  minLength,
+  minLength
 }) => {
   const [active, setActive] = useState(false);
   /**
@@ -17,7 +17,7 @@ const Input = ({
    */
   const inputRef = useRef();
   const handleWrapperClick = () => {
-    setActive(true)
+    setActive(true);
     inputRef.current.focus();
   };
 
@@ -28,7 +28,10 @@ const Input = ({
   };
 
   return (
-    <div className={`parameter${active ? ' active' : ''}`} onClick={() => handleWrapperClick()}>
+    <div
+      className={`parameter ${active ? "active" : ""}`}
+      onClick={() => handleWrapperClick()}
+    >
       {label && <label>{label}</label>}
       <div className="inner-wrapper">
         <input
@@ -39,6 +42,7 @@ const Input = ({
           maxLength={maxLength}
           minLength={minLength}
           onChange={e => handleChange(e)}
+          onFocus={() => setActive(true)}
           onBlur={() => setActive(false)}
         />
         {addons && <div>{addons}</div>}

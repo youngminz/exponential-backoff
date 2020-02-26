@@ -71,7 +71,7 @@ const App = () => {
           value={totalRetryCount}
           placeholder="Total retry count"
           onChange={e => setTotalRetryCount(e.target.value)}
-          maxLength="2"
+          maxLength="3"
         />
       </div>
 
