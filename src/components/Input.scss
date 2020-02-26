@@ -1,0 +1,31 @@
+.parameter {
+  display: block;
+  width: 100%;
+  position: relative;
+  padding: 40px 20px 10px;
+  border: 1px solid #bbb;
+  margin: 10px 0;
+  transition-duration: 0.1s;
+
+  &:focus {
+    border: 1px solid #000;
+    transition-duration: 0.2s;
+  }
+
+  label {
+    position: absolute;
+    top: 10px;
+    left: 18px;
+  }
+
+  .inner-wrapper {
+    display: flex;
+
+    input {
+      appearance: none;
+      outline: 0;
+      padding: 0;
+      border: none;
+    }
+  }
+}
