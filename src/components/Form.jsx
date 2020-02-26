@@ -1,7 +1,7 @@
 import React from "react";
-import "./InputParameter.scss";
+import "./Form.scss";
 
-const InputParameter = ({
+const Form = ({
   minRetryBackoffSeconds,
   setMinRetryBackoffSeconds,
   maxRetryBackoffSeconds,
@@ -33,4 +33,4 @@ const InputParameter = ({
   );
 };
 
-export default InputParameter;
+export default Form;

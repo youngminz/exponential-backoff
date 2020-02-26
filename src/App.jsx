@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import "./App.css";
-import InputParameter from "./components/InputParameter";
+import Form from "./components/Form";
 import Result from "./components/Result";
 
 const calculateExponentialBackoff = (
@@ -47,7 +47,7 @@ const App = () => {
     <main className="app">
       <div className="title">exponential backoff calculator</div>
 
-      <InputParameter
+      <Form
         minRetryBackoffSeconds={minRetryBackoffSeconds}
         setMinRetryBackoffSeconds={setMinRetryBackoffSeconds}
         maxRetryBackoffSeconds={maxRetryBackoffSeconds}
