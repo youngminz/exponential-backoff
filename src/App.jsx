@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import Result from "./components/Result";
@@ -33,15 +33,21 @@ const App = () => {
   const [maxRetryBackoffSeconds, setMaxRetryBackoffSeconds] = useState(60.0);
   const [totalRetryCount, setTotalRetryCount] = useState(15);
 
-  const calculationResult = useMemo(
-    () =>
-      calculateExponentialBackoff(
-        parseFloat(minRetryBackoffSeconds),
-        parseFloat(maxRetryBackoffSeconds),
-        parseInt(totalRetryCount)
-      ),
-    [minRetryBackoffSeconds, maxRetryBackoffSeconds, totalRetryCount]
-  );
+  let calculationResult = null;
+
+  if (
+    Number.isNaN(parseFloat(minRetryBackoffSeconds)) ||
+    Number.isNaN(parseFloat(maxRetryBackoffSeconds)) ||
+    Number.isNaN(parseInt(totalRetryCount))
+  ) {
+    calculationResult = [];
+  } else {
+    calculationResult = calculateExponentialBackoff(
+      parseFloat(minRetryBackoffSeconds),
+      parseFloat(maxRetryBackoffSeconds),
+      parseInt(totalRetryCount)
+    );
+  }
 
   return (
     <main className="app">
