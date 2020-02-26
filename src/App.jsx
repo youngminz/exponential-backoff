@@ -9,19 +9,19 @@ const calculateExponentialBackoff = (
   totalRetryCount
 ) => {
   let result = [];
-  let accumlateBackoffSeconds = 0.0;
+  let accumulateBackoffSeconds = 0.0;
 
   for (let retryCount = 1; retryCount <= totalRetryCount; retryCount++) {
     const backoffSeconds = Math.min(
       minRetryBackoff * 2 ** (retryCount - 1),
       maxRetryBackoff
     );
-    accumlateBackoffSeconds += backoffSeconds;
+    accumulateBackoffSeconds += backoffSeconds;
 
     result.push({
       retryCount,
       backoffSeconds,
-      accumlateBackoffSeconds
+      accumulateBackoffSeconds
     });
   }
 
