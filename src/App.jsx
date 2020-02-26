@@ -55,22 +55,17 @@ const App = () => {
           onChange={e => setMinRetryBackoffSeconds(e.target.value)}
         />
         <Input 
-          label="Min retry backoff seconds"
-          value={minRetryBackoffSeconds}
-          placeholder="min retry backoff seconds"
-          onChange={e => setMinRetryBackoffSeconds(e.target.value)}
+          label="Max retry backoff seconds"
+          value={maxRetryBackoffSeconds}
+          placeholder="max retry backoff seconds"
+          onChange={e => setMaxRetryBackoffSeconds(e.target.value)}
         />
         <Input 
           label="Total retry count"
           value={totalRetryCount}
           placeholder="Total retry count"
           onChange={e => setTotalRetryCount(e.target.value)}
-        />
-        <Input 
-          label="Max retry backoff seconds"
-          value={maxRetryBackoffSeconds}
-          placeholder="max retry backoff seconds"
-          onChange={e => setMaxRetryBackoffSeconds(e.target.value)}
+          maxLength="2"
         />
       </div>
 
