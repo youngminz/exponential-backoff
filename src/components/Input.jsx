@@ -45,7 +45,7 @@ const Input = ({
           onFocus={() => setActive(true)}
           onBlur={() => setActive(false)}
         />
-        {addons && <div>{addons}</div>}
+        {addons && <div className="addons">{addons}</div>}
       </div>
     </div>
   );

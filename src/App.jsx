@@ -51,27 +51,27 @@ const App = () => {
 
   return (
     <main className="app">
-      <h1>exponential backoff calculator</h1>
+      <h1>truncated exponential backoff calculator</h1>
 
       <div className="form-wrapper">
         <Input
-          label="Min retry backoff seconds"
+          label="Min retry backoff"
           value={minRetryBackoffSeconds}
-          placeholder="Min retry backoff seconds"
           onChange={e => setMinRetryBackoffSeconds(e.target.value)}
+          addons="seconds"
         />
         <Input
-          label="Max retry backoff seconds"
+          label="Max retry backoff"
           value={maxRetryBackoffSeconds}
-          placeholder="max retry backoff seconds"
           onChange={e => setMaxRetryBackoffSeconds(e.target.value)}
+          addons="seconds"
         />
         <Input
           label="Total retry count"
           value={totalRetryCount}
-          placeholder="Total retry count"
           onChange={e => setTotalRetryCount(e.target.value)}
           maxLength="3"
+          addons="retries"
         />
       </div>
 

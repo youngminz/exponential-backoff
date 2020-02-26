@@ -5,17 +5,23 @@
   padding: 40px 20px 10px;
   border: 1px solid #bbb;
   margin: 10px 0;
-  transition-duration: 0.1s;
   transition-duration: 0.2s;
 
   &.active {
     border-color: #000;
+
+    label {
+      color: #000;
+    }
   }
 
   label {
     position: absolute;
     top: 10px;
     left: 18px;
+    font-size: 14px;
+    color: #bbb;
+    transition-duration: 0.2s;
   }
 
   .inner-wrapper {
@@ -26,6 +32,12 @@
       outline: 0;
       padding: 0;
       border: none;
+      text-align: right;
+      flex-grow: 1;
+      font-weight: bold;
+    }
+    .addons {
+      padding-left: 7px;
     }
   }
 }
