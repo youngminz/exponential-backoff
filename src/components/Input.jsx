@@ -11,11 +11,13 @@ const Input = ({
   maxLength,
   minLength,
 }) => {
+  const [active, setActive] = useState(false);
   /**
    * wrapper div를 클릭해도 input으로 포커스 되는기능 구현
    */
   const inputRef = useRef();
   const handleWrapperClick = () => {
+    setActive(true)
     inputRef.current.focus();
   };
 
@@ -26,7 +28,7 @@ const Input = ({
   };
 
   return (
-    <div className="parameter" onClick={() => handleWrapperClick()}>
+    <div className={`parameter${active ? ' active' : ''}`} onClick={() => handleWrapperClick()}>
       {label && <label>{label}</label>}
       <div className="inner-wrapper">
         <input
@@ -37,6 +39,7 @@ const Input = ({
           maxLength={maxLength}
           minLength={minLength}
           onChange={e => handleChange(e)}
+          onBlur={() => setActive(false)}
         />
         {addons && <div>{addons}</div>}
       </div>

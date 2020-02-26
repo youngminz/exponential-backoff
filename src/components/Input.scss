@@ -6,10 +6,10 @@
   border: 1px solid #bbb;
   margin: 10px 0;
   transition-duration: 0.1s;
+  transition-duration: 0.2s;
 
-  &:focus {
-    border: 1px solid #000;
-    transition-duration: 0.2s;
+  &.active {
+    border-color: #000;
   }
 
   label {
