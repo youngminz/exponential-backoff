@@ -1,0 +1,16 @@
+.app {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 15px;
+
+  h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .form-wrapper {
+    > div {
+      margin-bottom: 15px;
+    }
+  }
+}
