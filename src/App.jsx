@@ -56,18 +56,21 @@ const App = () => {
 
       <div className="form-wrapper">
         <Input
+          type="number"
           label="min retry backoff"
           value={minRetryBackoffSeconds}
           onChange={e => setMinRetryBackoffSeconds(e.target.value)}
           addons="sec"
         />
         <Input
+          type="number"
           label="max retry backoff"
           value={maxRetryBackoffSeconds}
           onChange={e => setMaxRetryBackoffSeconds(e.target.value)}
           addons="sec"
         />
         <Input
+          type="number"
           label="total retry count"
           value={totalRetryCount}
           onChange={e => setTotalRetryCount(e.target.value)}
