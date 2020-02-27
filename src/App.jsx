@@ -29,10 +29,22 @@ const calculateExponentialBackoff = (
   return result;
 };
 
+const getQueryStringValue = key => {
+  const url = new URL(window.location);
+  const params = new URLSearchParams(url.search);
+  return params.get(key);
+};
+
 const App = () => {
-  const [minRetryBackoffSeconds, setMinRetryBackoffSeconds] = useState(0.1);
-  const [maxRetryBackoffSeconds, setMaxRetryBackoffSeconds] = useState(60.0);
-  const [totalRetryCount, setTotalRetryCount] = useState(15);
+  const [minRetryBackoffSeconds, setMinRetryBackoffSeconds] = useState(
+    getQueryStringValue("min") || 0.1
+  );
+  const [maxRetryBackoffSeconds, setMaxRetryBackoffSeconds] = useState(
+    getQueryStringValue("max") || 60.0
+  );
+  const [totalRetryCount, setTotalRetryCount] = useState(
+    getQueryStringValue("retry") || 15
+  );
 
   let calculationResult = null;
 
@@ -48,6 +60,14 @@ const App = () => {
       parseFloat(maxRetryBackoffSeconds),
       parseInt(totalRetryCount)
     );
+
+    if (window.history.replaceState) {
+      const newUrl =
+        new URL(window.location).origin +
+        `?min=${minRetryBackoffSeconds}&max=${maxRetryBackoffSeconds}&retry=${totalRetryCount}`;
+
+      window.history.replaceState({ path: newUrl }, "", newUrl);
+    }
   }
 
   return (
