@@ -28,7 +28,6 @@
     display: flex;
 
     input {
-      appearance: none;
       outline: 0;
       padding: 0;
       border: none;
@@ -36,6 +35,24 @@
       flex-grow: 1;
       font-weight: bold;
       width: 100px;
+
+      // Remove Arrows
+      // Chrome, Safari, Edge, Opera
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+      }
+
+      // IE, Edge
+      &::-ms-clear {
+        display: none;
+      }
+
+      // Firefox
+      &[type="number"] {
+        -moz-appearance: textfield;
+      }
     }
     .addons {
       padding-left: 7px;
