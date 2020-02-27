@@ -40,7 +40,7 @@
       // Chrome, Safari, Edge, Opera
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
-        appearance: none;
+        -webkit-appearance: none;
         margin: 0;
       }
 
