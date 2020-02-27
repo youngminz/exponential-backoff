@@ -37,9 +37,9 @@ const App = () => {
   let calculationResult = null;
 
   if (
-    Number.isNaN(parseFloat(minRetryBackoffSeconds)) ||
-    Number.isNaN(parseFloat(maxRetryBackoffSeconds)) ||
-    Number.isNaN(parseInt(totalRetryCount))
+    isNaN(parseFloat(minRetryBackoffSeconds)) ||
+    isNaN(parseFloat(maxRetryBackoffSeconds)) ||
+    isNaN(parseInt(totalRetryCount))
   ) {
     calculationResult = [];
   } else {
