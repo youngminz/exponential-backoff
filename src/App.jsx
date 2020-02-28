@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Header from "./components/Header";
 import Input from "./components/Input";
 import Result from "./components/Result";
 
@@ -72,7 +73,7 @@ const App = () => {
 
   return (
     <main className="app">
-      <h1>truncated exponential backoff simulator</h1>
+      <Header />
 
       <div className="form-wrapper">
         <Input
