@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Header from "./components/Header";
-import Input from "./components/Input";
-import Result from "./components/Result";
+import Header from "./Header";
+import Input from "./Input";
+import Result from "./Result";
 
 import "./App.scss";
 
