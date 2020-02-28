@@ -2,6 +2,15 @@ import React from "react";
 
 import "./Result.scss";
 
+const formatTime = seconds => {
+  if (seconds >= 60) {
+    return `${parseInt(seconds / 60)} min ${parseInt(seconds % 60)} sec`;
+  } else if (seconds >= 10) {
+    return `${parseInt(seconds % 60)} sec`;
+  }
+  return `${(seconds % 60).toFixed(2)} sec`;
+};
+
 const Result = ({ calculationResult }) => {
   const header = (
     <tr>
@@ -15,8 +24,8 @@ const Result = ({ calculationResult }) => {
       return (
         <tr key={retryCount}>
           <td>{retryCount}</td>
-          <td>{backoffSeconds.toFixed(2)} sec</td>
-          <td>{accumulateBackoffSeconds.toFixed(2)} sec</td>
+          <td>{formatTime(backoffSeconds)}</td>
+          <td>{formatTime(accumulateBackoffSeconds)}</td>
         </tr>
       );
     }
