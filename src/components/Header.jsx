@@ -1,9 +1,15 @@
 import React from "react";
+import classNames from "classnames/bind";
 
-import "./Header.scss";
+import styles from "./Header.module.scss";
+const cx = classNames.bind(styles);
 
 const Header = () => {
-  return <h1>truncated exponential backoff simulator</h1>;
+  return (
+    <header className={cx("Header")}>
+      <h1>truncated exponential backoff simulator</h1>
+    </header>
+  );
 };
 
 export default Header;

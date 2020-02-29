@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import classNames from "classnames/bind";
+
 import Header from "./Header";
 import Input from "./Input";
 import Result from "./Result";
 
-import "./App.scss";
+import styles from "./App.module.scss";
+const cx = classNames.bind(styles);
 
 const calculateExponentialBackoff = (
   minRetryBackoff,
@@ -72,10 +75,10 @@ const App = () => {
   }
 
   return (
-    <main className="app">
+    <main className={cx("App")}>
       <Header />
 
-      <div className="form-wrapper">
+      <div className={cx("form-wrapper")}>
         <Input
           type="number"
           label="min retry backoff"

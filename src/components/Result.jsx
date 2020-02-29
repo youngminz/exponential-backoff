@@ -1,6 +1,8 @@
 import React from "react";
+import classNames from "classnames/bind";
 
-import "./Result.scss";
+import styles from "./Result.module.scss";
+const cx = classNames.bind(styles);
 
 const formatTime = seconds => {
   if (seconds >= 60) {
@@ -32,10 +34,12 @@ const Result = ({ calculationResult }) => {
   );
 
   return (
-    <table className="Result">
-      <thead>{header}</thead>
-      <tbody>{body}</tbody>
-    </table>
+    <div className={cx("Result")}>
+      <table>
+        <thead>{header}</thead>
+        <tbody>{body}</tbody>
+      </table>
+    </div>
   );
 };
 
