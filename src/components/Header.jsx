@@ -17,6 +17,15 @@ const Header = () => {
         </a>
         )
       </p>
+      <p>The formula is following:</p>
+      <code>
+        &#123;current backoff&#125; = min(
+        <br />
+        &nbsp;&nbsp;&#123;min retry backoff&#125; * (2 ** (&#123;retry #&#125; -
+        1)), <br />
+        &nbsp;&nbsp;&#123;max retry backoff&#125;
+        <br />)
+      </code>
     </header>
   );
 };
