@@ -13,6 +13,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: deploy
       run: |
+        git remote set-url origin https://youngminz:${{ secrets.GITHUB_TOKEN }}@github.com/youngminz/exponential-backoff.git
         git config --global user.email "youngminz.kr@gmail.com"
         git config --global user.name "Youngmin Koo"
         yarn
