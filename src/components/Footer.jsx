@@ -16,15 +16,17 @@ const Footer = () => {
         </a>
         )
       </p>
-      <p>Formula:</p>
-      <code>
-        &#123;current backoff&#125; = min(
-        <br />
-        &nbsp;&nbsp;&#123;min retry backoff&#125; * (2 ** (&#123;retry #&#125; -
-        1)), <br />
-        &nbsp;&nbsp;&#123;max retry backoff&#125;
-        <br />)
-      </code>
+      <p>
+        Formula:{" "}
+        <code>
+          &#123;current backoff&#125; = min(
+          <br />
+          &nbsp;&nbsp;&#123;min retry backoff&#125; * (2 ** (&#123;retry #&#125;
+          - 1)), <br />
+          &nbsp;&nbsp;&#123;max retry backoff&#125;
+          <br />)
+        </code>
+      </p>
       <p>
         Source Code:{" "}
         <a href="https://github.com/youngminz/exponential-backoff">
