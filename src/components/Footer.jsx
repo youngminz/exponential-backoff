@@ -16,6 +16,7 @@ const Footer = () => {
         </a>
         )
       </p>
+      <p>Formula:</p>
       <code>
         &#123;current backoff&#125; = min(
         <br />
