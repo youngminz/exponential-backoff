@@ -29,7 +29,7 @@ const Input = ({
 
   return (
     <div
-      className={cx("Input", { ["active"]: active })}
+      className={cx("Input", { active })}
       onClick={() => handleWrapperClick()}
     >
       {label && <label>{label}</label>}
