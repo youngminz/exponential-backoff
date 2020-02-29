@@ -31,13 +31,15 @@ const Result = ({ calculationResult }) => {
   };
 
   const toggleButton = (
-    <button
-      onClick={() => {
-        setMode(modeTransition[mode]);
-      }}
-    >
-      Toggle to {modeTransition[mode]} view
-    </button>
+    <div class={cx("toggle-button")}>
+      <button
+        onClick={() => {
+          setMode(modeTransition[mode]);
+        }}
+      >
+        Toggle to {modeTransition[mode]} view
+      </button>
+    </div>
   );
 
   let content;
@@ -92,8 +94,8 @@ const Result = ({ calculationResult }) => {
 
   return (
     <div className={cx("Result")}>
-      {content}
       {toggleButton}
+      {content}
     </div>
   );
 };
