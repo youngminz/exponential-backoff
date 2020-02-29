@@ -24,7 +24,7 @@ const formatTime = seconds => {
 };
 
 const Result = ({ calculationResult }) => {
-  const [mode, setMode] = useState("table");
+  const [mode, setMode] = useState("chart");
   const modeTransition = {
     table: "chart",
     chart: "table"
