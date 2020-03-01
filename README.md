@@ -6,4 +6,4 @@ This is a simple truncated exponential backoff simulator, built with Create Reac
 
 ## Thanks to
 
-- @kibaek-kimm for input component.
+- [@kibaek-kimm](https://github.com/kibaek-kimm) for input component.
