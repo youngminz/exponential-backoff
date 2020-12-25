@@ -66,7 +66,7 @@ const Main = () => {
 
     if (window.history.replaceState) {
       const newUrl =
-        new URL(window.location).origin +
+        window.location.toString().replace(window.location.search, "") +
         `?min=${minRetryBackoffSeconds}&max=${maxRetryBackoffSeconds}&retry=${totalRetryCount}`;
 
       window.history.replaceState({ path: newUrl }, "", newUrl);
